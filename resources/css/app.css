@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+    @apply h-[100vh];
+}
+body{
+    @apply h-full;
+}
+.mainContent{
+    @apply h-full;
+}
