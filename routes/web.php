@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/fetch/{username}', [ProfileController::class, 'fetch'])->name('profile.fetch');
+Route::get('/', [ProfileController::class, 'index'])->name('profile.view');
 Route::get('/{profile?}', [ProfileController::class, 'show'])->name('profile.view');
+Route::get('/fetch/{username}', [ProfileController::class, 'fetch'])->name('profile.fetch');

@@ -1,6 +1,6 @@
-import React, { Fragment, useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import React, { Fragment, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
+
 import { snakeToCamel } from "./common/functions";
 
 const Profiler = (props) => {
@@ -13,7 +13,11 @@ const Profiler = (props) => {
             profile = await response.json();
         setProfile(
             Object.assign(
-                { status: response.status == 200 ? "ok" : "error" },
+                {
+                    status: [200, 201].includes(response.status)
+                        ? "ok"
+                        : "error",
+                },
                 profile
             )
         );
@@ -22,8 +26,6 @@ const Profiler = (props) => {
     useEffect(() => {
         if (props.username) fetchProfile(props.username);
     }, []);
-
-    console.log(profile, profile?.status ?? "default");
 
     return (
         <Fragment>
@@ -46,8 +48,8 @@ const Profiler = (props) => {
                     value="Go"
                 />
             </form>
-            {
-                profile && {
+            {profile &&
+                {
                     ok: (
                         <div className="flex flex-col items-center space-y-2">
                             <div
@@ -73,8 +75,7 @@ const Profiler = (props) => {
                         </h2>
                     ),
                     default: null,
-                }[profile?.status ?? "default"]
-            }
+                }[profile?.status ?? "default"]}
         </Fragment>
     );
 };

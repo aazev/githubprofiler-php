@@ -44,6 +44,7 @@ class ProfileController extends Controller
                 'avatar_url' => $avatar
             ]);
             $prof->save();
+            $prof->refresh();
 
             return $prof;
         }
