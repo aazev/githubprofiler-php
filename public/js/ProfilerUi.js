@@ -35313,7 +35313,7 @@ var Profiler = function Profiler(props) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return fetch("/api/fetch/".concat(username));
+            return fetch("http://localhost:3000/api/fetch/".concat(username));
           case 2:
             response = _context.sent;
             _context.next = 5;
@@ -35354,7 +35354,8 @@ var Profiler = function Profiler(props) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
         type: "submit",
         className: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer",
-        value: "Go"
+        value: "Go",
+        disabled: !username
       })]
     }), profile && {
       ok: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {

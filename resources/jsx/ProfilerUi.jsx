@@ -9,7 +9,9 @@ const Profiler = (props) => {
     const [profile, setProfile] = useState(null);
 
     const fetchProfile = async (username) => {
-        const response = await fetch(`/api/fetch/${username}`),
+        const response = await fetch(
+                `http://localhost:3000/api/fetch/${username}`
+            ),
             profile = await response.json();
         setProfile(
             Object.assign(
@@ -46,6 +48,7 @@ const Profiler = (props) => {
                     type="submit"
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
                     value="Go"
+                    disabled={!username}
                 />
             </form>
             {profile &&
